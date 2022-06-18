@@ -6,7 +6,7 @@ def p1():
     for i in range(1000):
         if (i % 3 == 0) or (i % 5 == 0):
             sum += i
-    print(sum)
+    print(f'Result: {sum}')
 
 
 def p2():
@@ -18,7 +18,7 @@ def p2():
         aux = b
         b = b + a
         a = aux
-    print(sum)
+    print(f'Result: {sum}')
 
 
 def p3():
