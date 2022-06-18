@@ -17,12 +17,12 @@ def run():
             break
 
         euler_problem(
-            get_problem_title_from_html(get_html_text(False, problem))+'\n',
+            get_problem_title_from_html(get_html_text(False, problem)),
             clean_problem_description_format(get_html_text(True, problem)),
             f"https://projecteuler.net/problem={problem}",
             getattr(solutions, f'p{problem}', None)
         )
-        print('\nPress enter to continue\n')
+        print('\nPress enter to continue')
         input('')
 
 

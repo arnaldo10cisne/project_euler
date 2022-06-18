@@ -35,7 +35,7 @@ def get_html_text(minimal, problem):
 
 
 def get_problem_title_from_html(html_text):
-    return html_text[html_text.index('<h2>')+4:html_text.index('</h2>')]
+    return html_text[html_text.index('<h2>')+4:html_text.index('</h2>')]+'\n'
 
 
 def clean_problem_description_format(problem_description):
