@@ -16,3 +16,11 @@ def p2():
         b = b + a
         a = aux
     print(sum)
+
+
+def p3():
+    print('Problem 3')
+
+
+def p4():
+    print('Problem 4')

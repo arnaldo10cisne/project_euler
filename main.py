@@ -1,5 +1,10 @@
 import solutions
-import json
+from utils import (
+    clear_screen,
+    get_problem_title_from_html,
+    get_html_text,
+    clean_problem_description_format
+)
 
 
 class EulerProblem():
@@ -23,20 +28,26 @@ def euler_problem(title, description, url, solution_method):
     current_problem = EulerProblem(title, description, url, solution_method)
     current_problem.show_title()
     current_problem.show_description()
-    current_problem.execute_solution()
+    if solution_method is not None:
+        current_problem.execute_solution()
 
 
 def run():
-    with open('problem_data.json', 'r') as file:
-        json_string = file.read()
-    data = json.loads(json_string)
-    problem = input('What problem would you like to show?: ')
-    euler_problem(
-        data["data"][f"p{problem}"]["title"],
-        data["data"][f"p{problem}"]["description"],
-        data["data"][f"p{problem}"]["url"],
-        getattr(solutions, f'p{problem}')
-    )
+    while True:
+        clear_screen()
+        problem = input('Number of problem to show (Press 0 to exit): ')
+        clear_screen()
+        if problem == '0':
+            break
+
+        euler_problem(
+            get_problem_title_from_html(get_html_text(False, problem))+'\n',
+            clean_problem_description_format(get_html_text(True, problem)),
+            f"https://projecteuler.net/problem={problem}",
+            getattr(solutions, f'p{problem}', None)
+        )
+        print('\nPress enter to continue\n')
+        input('')
 
 
 if __name__ == "__main__":
