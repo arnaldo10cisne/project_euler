@@ -3,33 +3,9 @@ from utils import (
     clear_screen,
     get_problem_title_from_html,
     get_html_text,
-    clean_problem_description_format
+    clean_problem_description_format,
+    euler_problem
 )
-
-
-class EulerProblem():
-    def __init__(self, title, description, url, solution_method):
-        self.title = title
-        self.description = description
-        self.url = url
-        self.solution_method = solution_method
-
-    def show_title(self):
-        print(self.title)
-
-    def show_description(self):
-        print(self.description)
-
-    def execute_solution(self):
-        self.solution_method()
-
-
-def euler_problem(title, description, url, solution_method):
-    current_problem = EulerProblem(title, description, url, solution_method)
-    current_problem.show_title()
-    current_problem.show_description()
-    if solution_method is not None:
-        current_problem.execute_solution()
 
 
 def run():

@@ -9,6 +9,23 @@ HTML_TAGS = [
 ]
 
 
+class EulerProblem():
+    def __init__(self, title, description, url, solution_method):
+        self.title = title
+        self.description = description
+        self.url = url
+        self.solution_method = solution_method
+
+    def show_title(self):
+        print(self.title)
+
+    def show_description(self):
+        print(self.description)
+
+    def execute_solution(self):
+        self.solution_method()
+
+
 def get_euler_url(min, prob):
     return f'https://projecteuler.net/{"minimal" if min else "problem"}={prob}'
 
@@ -30,3 +47,11 @@ def clean_problem_description_format(problem_description):
 
 def clear_screen():
     os.system('clear')
+
+
+def euler_problem(title, description, url, solution_method):
+    current_problem = EulerProblem(title, description, url, solution_method)
+    current_problem.show_title()
+    current_problem.show_description()
+    if solution_method is not None:
+        current_problem.execute_solution()
